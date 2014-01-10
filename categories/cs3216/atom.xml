@@ -1,122 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>interrobeng‽</title>
-  <meta name="author" content="Beng Hee Eu">
-
-  
-  <meta name="description" content="When you come to a fork in the road, take it!
-Yogi Berra Q1: How much control and authority would you have given to this fourth voice in our choice &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://interrobeng.com">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="interrobeng‽" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-    <link rel="openid.server"
-        href="http://www.myopenid.com/server" />
-  <link rel="openid.delegate"
-        href="http://benghee.myopenid.com/" />
-  <link rel="openid2.local_id"
-        href="http://benghee.myopenid.com" />
-  <link rel="openid2.provider"
-        href="http://www.myopenid.com/server" />
-  <meta http-equiv="X-XRDS-Location"
-        content="http://www.myopenid.com/xrds?username=benghee.myopenid.com" />
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-43077825-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">interrobeng‽</a></h1>
-  
-    <h2>ad astra per alia porci</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:interrobeng.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[Category: CS3216 | interrobeng‽]]></title>
+  <link href="http://interrobeng.com/categories/cs3216/atom.xml" rel="self"/>
+  <link href="http://interrobeng.com/"/>
+  <updated>2014-01-10T18:43:14+08:00</updated>
+  <id>http://interrobeng.com/</id>
+  <author>
+    <name><![CDATA[Beng Hee Eu]]></name>
     
-      <h1 class="entry-title"><a href="/2013/10/04/team-dynamics/">Team Dynamics</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2013-10-04T22:57:00+08:00" class="published updated" pubdate data-updated="true">Oct 4<span>th</span>, 2013</time>
-        
-           | <a href="/2013/10/04/team-dynamics/#disqus_thread"
-             data-disqus-identifier="http://interrobeng.com/2013/10/04/team-dynamics/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>When you come to a fork in the road, take it!<br/>
+  <entry>
+    <title type="html"><![CDATA[Team Dynamics]]></title>
+    <link href="http://interrobeng.com/2013/10/04/team-dynamics/"/>
+    <updated>2013-10-04T22:57:00+08:00</updated>
+    <id>http://interrobeng.com/2013/10/04/team-dynamics</id>
+    <content type="html"><![CDATA[<blockquote><p>When you come to a fork in the road, take it!<br/>
 <cite>Yogi Berra</cite></p></blockquote>
 
 <p><strong>Q1: How much control and authority would you have given to this fourth voice in our choice of platforms (HTML5/native iOS)?</strong></p>
@@ -159,45 +61,19 @@ Yogi Berra Q1: How much control and authority would you have given to this fourt
 <p> Just pick one and get some real work done. This is a reminder to myself as well &ndash; I have definitely been guilty of Shiny New Framework Syndrome on various occasions too.</p></li>
 </ol>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+]]></content>
+    
       
-  <header>
     
-      <h1 class="entry-title"><a href="/2013/09/03/momo-adult-social-networking/">Momo - Adult Social Networking</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
+    <author><name><![CDATA[Beng Hee Eu]]></name></author>
+  </entry>
   
-
-
-<time datetime="2013-09-03T21:07:00+08:00" class="published updated" pubdate data-updated="true">Sep 3<span>rd</span>, 2013</time>
-        
-           | <a href="/2013/09/03/momo-adult-social-networking/#disqus_thread"
-             data-disqus-identifier="http://interrobeng.com/2013/09/03/momo-adult-social-networking/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>How to Win Friends and <del>Influence People</del> Get Laid</p></blockquote>
+  <entry>
+    <title type="html"><![CDATA[Momo - Adult Social Networking]]></title>
+    <link href="http://interrobeng.com/2013/09/03/momo-adult-social-networking/"/>
+    <updated>2013-09-03T21:07:00+08:00</updated>
+    <id>http://interrobeng.com/2013/09/03/momo-adult-social-networking</id>
+    <content type="html"><![CDATA[<blockquote><p>How to Win Friends and <del>Influence People</del> Get Laid</p></blockquote>
 
 <p>Certainly an attention-grabbing way of starting of the presentation on Momo, especially to a class mostly full of guys. Definitely the most entertaining presentation of the evening as well. In fact, the entertaining points stuck in my memory so much, that I was hard-pressed to find the <u>most important</u> three points, but here goes:</p>
 
@@ -228,52 +104,26 @@ Yogi Berra Q1: How much control and authority would you have given to this fourt
 
 <h3>PostScript</h3>
 
-<p>Just want to add that I&rsquo;m very thankful for our evaluators&#8217; feedback on our presentation.</p>
+<p>Just want to add that I&rsquo;m very thankful for our evaluators' feedback on our presentation.</p>
 
 <p>John and Shubham had kindly offered to take on my part of the presentation, or even the full presentation, and honestly I was sorely tempted. After all, many other teams were presenting with less than their full complement, and there were good reasons to, given the presentation format.</p>
 
 <p>However, as mentioned in <a href="/2013/08/10/what-i-hope-to-learn-in-cs3216/">What I Hope to Learn in CS3216</a>, I wanted to face down my fears regarding presentations, and I&rsquo;m really glad I did.</p>
 
 <p>Was still <em>horribly</em> nervous (could everyone tell?) while speaking, but I&rsquo;m very encouraged by the positive feedback regarding my sections &ndash; it really made my day! [=</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+]]></content>
+    
       
-  <header>
     
-      <h1 class="entry-title"><a href="/2013/09/01/growth-hacking/">Growth Hacking</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
+    <author><name><![CDATA[Beng Hee Eu]]></name></author>
+  </entry>
   
-
-
-<time datetime="2013-09-01T16:46:00+08:00" class="published updated" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time>
-        
-           | <a href="/2013/09/01/growth-hacking/#disqus_thread"
-             data-disqus-identifier="http://interrobeng.com/2013/09/01/growth-hacking/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The talk on growth hacking by <a href="http://www.bjornlee.com">Bjorn Lee</a>, co-founder
+  <entry>
+    <title type="html"><![CDATA[Growth Hacking]]></title>
+    <link href="http://interrobeng.com/2013/09/01/growth-hacking/"/>
+    <updated>2013-09-01T16:46:00+08:00</updated>
+    <id>http://interrobeng.com/2013/09/01/growth-hacking</id>
+    <content type="html"><![CDATA[<p>The talk on growth hacking by <a href="http://www.bjornlee.com">Bjorn Lee</a>, co-founder
 of <a href="http://www.stickeryapp.com/">Stickery</a> was rather refreshing, especially
 after all the engineering-focused talks we&rsquo;ve been having.</p>
 
@@ -302,62 +152,31 @@ and valuable usage data.</p>
 <p>Probably not something we can mimic directly, but their clever and unorthodox
 approach aptly illustrates how far you could move beyond the mold in order to
 acquire traction.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+]]></content>
+    
       
-  <header>
     
-      <h1 class="entry-title"><a href="/2013/08/25/speed-up-git-5x-to-50x/">Speed Up Git (5x to 50x)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
+    <author><name><![CDATA[Beng Hee Eu]]></name></author>
+  </entry>
   
-
-
-<time datetime="2013-08-25T23:23:00+08:00" class="published updated" pubdate data-updated="true">Aug 25<span>th</span>, 2013</time>
-        
-           | <a href="/2013/08/25/speed-up-git-5x-to-50x/#disqus_thread"
-             data-disqus-identifier="http://interrobeng.com/2013/08/25/speed-up-git-5x-to-50x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>Note:</strong> Results may vary, depending on distance from your Git servers. In my
+  <entry>
+    <title type="html"><![CDATA[Speed Up Git (5x to 50x)]]></title>
+    <link href="http://interrobeng.com/2013/08/25/speed-up-git-5x-to-50x/"/>
+    <updated>2013-08-25T23:23:00+08:00</updated>
+    <id>http://interrobeng.com/2013/08/25/speed-up-git-5x-to-50x</id>
+    <content type="html"><![CDATA[<p><strong>Note:</strong> Results may vary, depending on distance from your Git servers. In my
 completely unscientific benchmarks using <code>time</code>, after the following steps,
 <code>git pull</code> went from ~5s, using GitHub, to ~0.1s, using EC2 on AWS Singapore.</p>
 
 <h3>Why?</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="gp">$</span> <span class="nb">time </span>git pull
-</span><span class='line'><span class="go">Already up-to-date.</span>
-</span><span class='line'>
-</span><span class='line'><span class="go">real    0m5.075s</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>``` console
+$ time git pull
+Already up-to-date.</p>
 
-
-<p>5 seconds just to tell you that your Git repository is already up-to-date?
+<p>real    0m5.075s
+```
+5 seconds just to tell you that your Git repository is already up-to-date?
 <strong>Unacceptable.</strong></p>
 
 <h3>Enable SSH Connection Sharing and Persistence</h3>
@@ -367,14 +186,11 @@ connection every time you perform a Git operation costs many round-trips, but
 you can keep them around and reuse them with the following lines in
 <code>~/.ssh/config</code>:</p>
 
-<figure class='code'><figcaption><span>~/.ssh/config</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='aconf'><span class='line'><span class="nb">ControlMaster</span> auto
-</span><span class='line'><span class="nb">ControlPath</span> <span class="sx">/tmp/</span>%r@%h:%p
-</span><span class='line'><span class="nb">ControlPersist</span> yes
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>aconf ~/.ssh/config
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+ControlPersist yes
+</code></p>
 
 <p><code>ControlMaster auto</code> enables the sharing of multiple SSH sessions over a single
 network connection, and auto-creating a master connection if it does not already
@@ -404,31 +220,28 @@ post-receive hook is the most elegant solution.</p>
 <p>On your server, set up a GitHub
 <a href="https://help.github.com/articles/managing-deploy-keys#deploy-keys">deploy key</a>:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="gp">$</span> ssh-keygen -t rsa -C <span class="s2">&quot;your_email@example.com&quot;</span>
-</span><span class='line'><span class="gp">$</span> cat .ssh/id_rsa.pub
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>console
+$ ssh-keygen -t rsa -C "your_email@example.com"
+$ cat .ssh/id_rsa.pub
+</code></p>
 
 <p>Go to your target repository&rsquo;s Settings &ndash;> Deploy Keys &ndash;> Add deploy key and
 paste the public key in and submit. Then you can mirror your repository:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="gp">$</span> git clone --mirror git@github.com:ahbeng/example.git
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>console
+$ git clone --mirror git@github.com:ahbeng/example.git
+</code></p>
 
 <p>To automatically to mirror to GitHub after you&rsquo;ve pushed, set up a
 <a href="http://git-scm.com/book/en/Customizing-Git-Git-Hooks">Git hook</a> at
 <code>hooks/post-receive</code>:</p>
 
-<figure class='code'><figcaption><span>hooks/post-receive</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
-</span><span class='line'>nohup git push --mirror &amp;&gt;/dev/null &amp;
-</span></code></pre></td></tr></table></div></figure>
+<p>``` bash hooks/post-receive</p>
 
+<h1>!/bin/bash</h1>
+
+<p>nohup git push &mdash;mirror &amp;>/dev/null &amp;
+```</p>
 
 <p>Your Git client won&rsquo;t disconnect till the script has completed, so a simple
 <code>git push --mirror</code> would defeat the purpose of setting this up, since you&rsquo;d be
@@ -439,89 +252,55 @@ and keep it running after logging out using
 
 <p>Make the hook executable:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="gp">$</span> chmod +x hooks/post-receive
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>console
+$ chmod +x hooks/post-receive
+</code></p>
 
 <p>Now you can use your new Git mirror locally. Assuming you have added the
 server&rsquo;s private key to ssh-agent:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="gp">$</span> ssh-add ec2.pem
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>console
+$ ssh-add ec2.pem
+</code></p>
 
 <p>You could clone it:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="gp">$</span> git clone user@hostname:example
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>console
+$ git clone user@hostname:example
+</code></p>
 
 <p>Or change your existing repository&rsquo;s remote:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="gp">$</span> git remote <span class="nb">set</span>-url origin user@hostname:example
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>console
+$ git remote set-url origin user@hostname:example
+</code></p>
 
 <h3>Results</h3>
 
 <p>Taken alone, using the Git mirror brings <code>git pull</code> down to ~1.2s. When combined
 with SSH connection sharing:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="gp">$</span> <span class="nb">time </span>git pull
-</span><span class='line'><span class="go">Already up-to-date.</span>
-</span><span class='line'>
-</span><span class='line'><span class="go">real    0m0.111s</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>``` console
+$ time git pull
+Already up-to-date.</p>
 
+<p>real    0m0.111s
+```</p>
 
 <p>0.1s Git remote operations. Awesome.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+]]></content>
+    
       
-  <header>
     
-      <h1 class="entry-title"><a href="/2013/08/10/what-i-hope-to-learn-in-cs3216/">What I Hope to Learn in CS3216</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
+    <author><name><![CDATA[Beng Hee Eu]]></name></author>
+  </entry>
   
-
-
-<time datetime="2013-08-10T01:50:00+08:00" class="published updated" pubdate data-updated="true">Aug 10<span>th</span>, 2013</time>
-        
-           | <a href="/2013/08/10/what-i-hope-to-learn-in-cs3216/#disqus_thread"
-             data-disqus-identifier="http://interrobeng.com/2013/08/10/what-i-hope-to-learn-in-cs3216/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Throw together a bunch of awesome hackerish people who love to solve problems and build stuff, and you&rsquo;re pretty much <em>guaranteed</em> to learn bucketloads &ndash; even in unexpected areas.</p>
+  <entry>
+    <title type="html"><![CDATA[What I Hope to Learn in CS3216]]></title>
+    <link href="http://interrobeng.com/2013/08/10/what-i-hope-to-learn-in-cs3216/"/>
+    <updated>2013-08-10T01:50:00+08:00</updated>
+    <id>http://interrobeng.com/2013/08/10/what-i-hope-to-learn-in-cs3216</id>
+    <content type="html"><![CDATA[<p>Throw together a bunch of awesome hackerish people who love to solve problems and build stuff, and you&rsquo;re pretty much <em>guaranteed</em> to learn bucketloads &ndash; even in unexpected areas.</p>
 
 <p>I try to learn as much as possible from every experience, so my short cop-out answer would be: keeping an open mind and not set too many mental boundaries on what I hope to learn.</p>
 
@@ -536,163 +315,11 @@ with SSH connection sharing:</p>
 
 
 <p>All that and of course, a <em>lot</em> of chances to practice and hone my craft, on the long road towards mastery. Bring it on.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
+]]></content>
     
-    <a href="/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2013/10/04/team-dynamics/">Team Dynamics</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/09/03/momo-adult-social-networking/">Momo - Adult Social Networking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/09/01/growth-hacking/">Growth Hacking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/08/25/speed-up-git-5x-to-50x/">Speed Up Git (5x to 50x)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/08/10/what-i-hope-to-learn-in-cs3216/">What I Hope to Learn in CS3216</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/ahbeng">@ahbeng</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'ahbeng',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/117459900676347540791?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Beng Hee Eu -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'interrobeng';
       
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-<script type="text/javascript">
-var clicky_site_ids = clicky_site_ids || [];
-clicky_site_ids.push(100648546);
-(function() {
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//static.getclicky.com/js';
-  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
-})();
-</script>
-<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100648546ns.gif" /></p></noscript>
-
-</body>
-</html>
+    
+    <author><name><![CDATA[Beng Hee Eu]]></name></author>
+  </entry>
+  
+</feed>
