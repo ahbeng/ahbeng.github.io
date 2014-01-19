@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: NUS | interrobeng‽]]></title>
+  <link href="http://interrobeng.com/categories/nus/atom.xml" rel="self"/>
+  <link href="http://interrobeng.com/"/>
+  <updated>2014-01-19T19:35:43+08:00</updated>
+  <id>http://interrobeng.com/</id>
+  <author>
+    <name><![CDATA[Beng Hee Eu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[NUS Matriculation Number Calculator]]></title>
+    <link href="http://interrobeng.com/2014/01/19/nus-matriculation-number-calculator/"/>
+    <updated>2014-01-19T19:10:51+08:00</updated>
+    <id>http://interrobeng.com/2014/01/19/nus-matriculation-number-calculator</id>
+    <content type="html"><![CDATA[<p><iframe style="width: 100%; height: 400px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/u8X5W/embedded/result,js,resources,html,css/light/"></iframe></p>
+]]></content>
+    
+      
+    
+    <author><name><![CDATA[Beng Hee Eu]]></name></author>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[NUS Matriculation Number Check Digit Algorithm]]></title>
+    <link href="http://interrobeng.com/2014/01/19/nus-matriculation-number-check-digit-algorithm/"/>
+    <updated>2014-01-19T13:02:33+08:00</updated>
+    <id>http://interrobeng.com/2014/01/19/nus-matriculation-number-check-digit-algorithm</id>
+    <content type="html"><![CDATA[<h3>Summary</h3>
+
+<p>A brief discussion of the <a href="http://en.wikipedia.org/wiki/Check_digit">check digit</a> algorithm for matriculation numbers / NUSNET IDs prefixed by either U or A, accompanied by a JavaScript implementation and a client-side <a href="/2014/01/19/nus-matriculation-number-calculator/">calculator</a>.</p>
+
+<p>Initiated due to a collaboration with <a href="https://www.qxcg.net/">Camillus</a> on a bookmarklet which involved mapping NUSNET IDs to matriculation numbers &ndash; I initially helped with the U prefix case, as it is more familiar to old farts like me.</p>
+
+<h3>Related Work</h3>
+
+<p>Various equivalent forms of the algorithm have been discussed under <a href="http://musingsofanaspiringpolymath.blogspot.sg/2008/06/nus-matriculation-number-checkdigit.html">NUS Matriculation Number Checkdigit</a>, <a href="http://musingsofanaspiringpolymath.blogspot.sg/2013/03/nus-matriculation-number-checkdigit-2.html">NUS Matriculation Number Checkdigit 2</a> and <a href="http://phyublog.blogspot.sg/2009/11/validate-your-matric-number.html">Validate Your NUS Undergraduate Matric Number</a>. Also, there is a server-side <a href="http://nvquanghuy.com/matric/">NUS Matric Resolver</a> by <a href="http://nvquanghuy.com/">Huy Nguyen</a> and a <a href="https://gist.github.com/lowjoel/6328287">Matric.js</a> gist by <a href="http://joelsplace.sg/">Joel Low</a>.</p>
+
+<p>Though correct, most of them involve extraneous steps, especially for U-prefixed matriculation numbers. It kinda bugged me, so I worked out a more elegant formulation during a short plane ride last week.</p>
+
+<h3>Algorithm</h3>
+
+<ol>
+<li><p>For U-prefixed NUSNET IDs such as <code>u0906931</code>, discard the third digit &ndash; u09<del style="color:red">0</del>6931, resulting in <code>u096931</code>.</p></li>
+<li><p>Let the last 6 digits be d<sub>1</sub> to d<sub>6</sub>. Compute the weighted sum s = w<sub>1</sub> &times; d<sub>1</sub> + &hellip; + w<sub>6</sub> &times; d<sub>6</sub> using the corresponding weights:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Prefix</th>
+<th align="center">w<sub>1</sub></th>
+<th align="center">w<sub>2</sub></th>
+<th align="center">w<sub>3</sub></th>
+<th align="center">w<sub>4</sub></th>
+<th align="center">w<sub>5</sub></th>
+<th align="center">w<sub>6</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>U</strong></td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center"><strong>A</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Find check digit corresponding to the remainder of the weighted sum divided by 13 (sum modulo 13):</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Remainder</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+<th align="center">12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Check Digit</strong></td>
+<td align="center">Y</td>
+<td align="center">X</td>
+<td align="center">W</td>
+<td align="center">U</td>
+<td align="center">R</td>
+<td align="center">N</td>
+<td align="center">M</td>
+<td align="center">L</td>
+<td align="center">J</td>
+<td align="center">H</td>
+<td align="center">E</td>
+<td align="center">A</td>
+<td align="center">B</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+
+
+<h3>Notes</h3>
+
+<p>The weights for A-prefixed matriculation numbers are all 1, i.e. the weighted sum is simply equal to the sum of the digits themselves, so their specific algorithm could be simplified further. However, it is formulated like this to unify the algorithms for both current prefixes, as well as possibly accommodate future prefixes.</p>
+
+<p>If this scheme and blog post are somehow still surviving in the far future, you would have to use all 7 digits instead of the last 6, when there have been over 1 million NUS undergraduates since 2010.</p>
+
+<p><strong>Historical note:</strong> The U prefix applied to undergraduates from AY2009/10 and before; the A prefix applies to undergraduates from AY2010/11 and after.</p>
+
+<h3>JavaScript Implementation</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>matric.js</span><a href='https://gist.github.com/8503349'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">calculateNUSMatricNumber</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">matches</span> <span class="o">=</span> <span class="nx">id</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^A\d{7}|U\d{6,7}/</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">matches</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Discard 3rd digit from U-prefixed NUSNET ID</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;U&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">match</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">match</span> <span class="o">=</span> <span class="nx">match</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="nx">match</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">weights</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">U</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+</span><span class='line'>            <span class="nx">A</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>        <span class="p">}[</span><span class="nx">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">digits</span> <span class="o">=</span> <span class="nx">match</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">);</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">weights</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">*</span> <span class="nx">digits</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">match</span> <span class="o">+</span> <span class="s1">&#39;YXWURNMLJHEAB&#39;</span><span class="p">[</span><span class="nx">sum</span> <span class="o">%</span> <span class="mi">13</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+</p>
+
+<h3>Matriculation Number Calculator</h3>
+
+<p>Could come in handy for quickly finding project mates' matriculation numbers.</p>
+
+<p><iframe style="width: 100%; height: 400px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/u8X5W/embedded/result,js,resources,html,css/light/"></iframe></p>
+]]></content>
+    
+      
+    
+    <author><name><![CDATA[Beng Hee Eu]]></name></author>
+  </entry>
+  
+</feed>

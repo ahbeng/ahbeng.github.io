@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>NUS Matriculation Number Check Digit Algorithm - interrobeng‽</title>
+  <meta name="author" content="Beng Hee Eu">
+
+  
+  <meta name="description" content="Summary A brief discussion of the check digit algorithm for matriculation numbers / NUSNET IDs prefixed by either U or A, accompanied by a JavaScript &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://interrobeng.com/2014/01/19/nus-matriculation-number-check-digit-algorithm">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="interrobeng‽" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+    <link rel="openid.server"
+        href="http://www.myopenid.com/server" />
+  <link rel="openid.delegate"
+        href="http://benghee.myopenid.com/" />
+  <link rel="openid2.local_id"
+        href="http://benghee.myopenid.com" />
+  <link rel="openid2.provider"
+        href="http://www.myopenid.com/server" />
+  <meta http-equiv="X-XRDS-Location"
+        content="http://www.myopenid.com/xrds?username=benghee.myopenid.com" />
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-43077825-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">interrobeng‽</a></h1>
+  
+    <h2>ad astra per alia porci</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:interrobeng.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">NUS Matriculation Number Check Digit Algorithm</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-19T13:02:33+08:00" class="published updated" pubdate data-updated="true">Jan 19<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://interrobeng.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>Summary</h3>
+
+<p>A brief discussion of the <a href="http://en.wikipedia.org/wiki/Check_digit">check digit</a> algorithm for matriculation numbers / NUSNET IDs prefixed by either U or A, accompanied by a JavaScript implementation and a client-side <a href="/2014/01/19/nus-matriculation-number-calculator/">calculator</a>.</p>
+
+<p>Initiated due to a collaboration with <a href="https://www.qxcg.net/">Camillus</a> on a bookmarklet which involved mapping NUSNET IDs to matriculation numbers &ndash; I initially helped with the U prefix case, as it is more familiar to old farts like me.</p>
+
+<h3>Related Work</h3>
+
+<p>Various equivalent forms of the algorithm have been discussed under <a href="http://musingsofanaspiringpolymath.blogspot.sg/2008/06/nus-matriculation-number-checkdigit.html">NUS Matriculation Number Checkdigit</a>, <a href="http://musingsofanaspiringpolymath.blogspot.sg/2013/03/nus-matriculation-number-checkdigit-2.html">NUS Matriculation Number Checkdigit 2</a> and <a href="http://phyublog.blogspot.sg/2009/11/validate-your-matric-number.html">Validate Your NUS Undergraduate Matric Number</a>. Also, there is a server-side <a href="http://nvquanghuy.com/matric/">NUS Matric Resolver</a> by <a href="http://nvquanghuy.com/">Huy Nguyen</a> and a <a href="https://gist.github.com/lowjoel/6328287">Matric.js</a> gist by <a href="http://joelsplace.sg/">Joel Low</a>.</p>
+
+<p>Though correct, most of them involve extraneous steps, especially for U-prefixed matriculation numbers. It kinda bugged me, so I worked out a more elegant formulation during a short plane ride last week.</p>
+
+<h3>Algorithm</h3>
+
+<ol>
+<li><p>For U-prefixed NUSNET IDs such as <code>u0906931</code>, discard the third digit &ndash; u09<del style="color:red">0</del>6931, resulting in <code>u096931</code>.</p></li>
+<li><p>Let the last 6 digits be d<sub>1</sub> to d<sub>6</sub>. Compute the weighted sum s = w<sub>1</sub> &times; d<sub>1</sub> + &hellip; + w<sub>6</sub> &times; d<sub>6</sub> using the corresponding weights:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Prefix</th>
+<th align="center">w<sub>1</sub></th>
+<th align="center">w<sub>2</sub></th>
+<th align="center">w<sub>3</sub></th>
+<th align="center">w<sub>4</sub></th>
+<th align="center">w<sub>5</sub></th>
+<th align="center">w<sub>6</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>U</strong></td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center"><strong>A</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Find check digit corresponding to the remainder of the weighted sum divided by 13 (sum modulo 13):</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Remainder</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+<th align="center">12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Check Digit</strong></td>
+<td align="center">Y</td>
+<td align="center">X</td>
+<td align="center">W</td>
+<td align="center">U</td>
+<td align="center">R</td>
+<td align="center">N</td>
+<td align="center">M</td>
+<td align="center">L</td>
+<td align="center">J</td>
+<td align="center">H</td>
+<td align="center">E</td>
+<td align="center">A</td>
+<td align="center">B</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+
+
+<h3>Notes</h3>
+
+<p>The weights for A-prefixed matriculation numbers are all 1, i.e. the weighted sum is simply equal to the sum of the digits themselves, so their specific algorithm could be simplified further. However, it is formulated like this to unify the algorithms for both current prefixes, as well as possibly accommodate future prefixes.</p>
+
+<p>If this scheme and blog post are somehow still surviving in the far future, you would have to use all 7 digits instead of the last 6, when there have been over 1 million NUS undergraduates since 2010.</p>
+
+<p><strong>Historical note:</strong> The U prefix applied to undergraduates from AY2009/10 and before; the A prefix applies to undergraduates from AY2010/11 and after.</p>
+
+<h3>JavaScript Implementation</h3>
+
+<figure class='code'><figcaption><span>matric.js</span><a href='https://gist.github.com/8503349'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">calculateNUSMatricNumber</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">matches</span> <span class="o">=</span> <span class="nx">id</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^A\d{7}|U\d{6,7}/</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">matches</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Discard 3rd digit from U-prefixed NUSNET ID</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;U&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">match</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">match</span> <span class="o">=</span> <span class="nx">match</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="nx">match</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">weights</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">U</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+</span><span class='line'>            <span class="nx">A</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>        <span class="p">}[</span><span class="nx">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">digits</span> <span class="o">=</span> <span class="nx">match</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">);</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">weights</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">*</span> <span class="nx">digits</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">match</span> <span class="o">+</span> <span class="s1">&#39;YXWURNMLJHEAB&#39;</span><span class="p">[</span><span class="nx">sum</span> <span class="o">%</span> <span class="mi">13</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Matriculation Number Calculator</h3>
+
+<p>Could come in handy for quickly finding project mates&#8217; matriculation numbers.</p>
+
+<iframe style="width: 100%; height: 400px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/u8X5W/embedded/result,js,resources,html,css/light/"></iframe>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Beng Hee Eu</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-19T13:02:33+08:00" class="published updated" pubdate data-updated="true">Jan 19<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/nus/'>NUS</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  <script type="text/javascript" src="http://www.reddit.com/static/button/button1.js"></script>
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://interrobeng.com/2014/01/19/nus-matriculation-number-check-digit-algorithm/" data-via="ahbengish" data-counturl="http://interrobeng.com/2014/01/19/nus-matriculation-number-check-digit-algorithm/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/10/04/team-dynamics/" title="Previous Post: Team Dynamics">&laquo; Team Dynamics</a>
+      
+      
+        <a class="basic-alignment right" href="/2014/01/19/nus-matriculation-number-calculator/" title="Next Post: NUS Matriculation Number Calculator">NUS Matriculation Number Calculator &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/01/19/nus-matriculation-number-calculator/">NUS Matriculation Number Calculator</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/19/nus-matriculation-number-check-digit-algorithm/">NUS Matriculation Number Check Digit Algorithm</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/04/team-dynamics/">Team Dynamics</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/03/momo-adult-social-networking/">Momo - Adult Social Networking</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/01/growth-hacking/">Growth Hacking</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ahbeng">@ahbeng</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ahbeng',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/117459900676347540791?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Beng Hee Eu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'interrobeng';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://interrobeng.com/2014/01/19/nus-matriculation-number-check-digit-algorithm/';
+        var disqus_url = 'http://interrobeng.com/2014/01/19/nus-matriculation-number-check-digit-algorithm/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script type="text/javascript">
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(100648546);
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//static.getclicky.com/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100648546ns.gif" /></p></noscript>
+
+</body>
+</html>
